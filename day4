@@ -1,0 +1,47 @@
+循环指令
+首先是for-in循环，这就和别的语言不一样了
+如果明确的知道循环执行的次数或者要对一个容器进行迭代（后面会讲到），那么我们推荐使用for-in循环
+示例：
+#!/usr/bin/env python 
+# -*- coding:utf-8 -*-
+# author:kaijing_yuan
+#for-in 循环
+sum = 0
+for x in range(100):
+    sum += x
+print (sum)
+
+需要说明的是上面代码中的range(101)可以用来构造一个从0到100的取值范围，这样就可以构造出一个整数的序列并用于循环中，例如：
+range(101)可以产生一个0到100的整数序列。
+range(1, 100)可以产生一个1到99的整数序列。
+range(1, 100, 2)可以产生一个1到99的奇数序列，其中2是步长，即数值序列的增量。
+
+
+while循环：
+不知道循环次数，while循环通过一个能够产生或转换出bool值的表达式来控制循环，表达式的值为True循环继续，
+表达式的值为False循环结束。下面我们通过一个“猜数字”的小游戏（计算机出一个1~100之间的随机数，人输入自己猜的数字，
+计算机给出对应的提示信息，直到人猜出计算机出的数字）来看看如何使用while循环。
+下面为我写的猜数字小游戏：
+#!/usr/bin/env python 
+# -*- coding:utf-8 -*-
+# author:袁凯菁
+import random
+
+num = random.randint(1,100)
+con = 0
+while 1:
+    con += 1
+    guessnum = input("请输入你猜的数字：")
+    if guessnum == num:
+        print ("恭喜你，猜对了！")
+        break
+    elif guessnum > num:
+        print ("大了哦！")
+    elif guessnum < num:
+        print ("小了哦！")
+print ("你一共猜了%d次" % con)
+if con >= 7:
+        print ("你也太蠢了")
+上面的代码中使用了break关键字来提前终止循环，需要注意的是break只能终止它所在的那个循环，这一点在使用嵌套的循环结构（下面会讲到）需要引起注意。除了break之外，还有另一个关键字是continue，它可以用来放弃本次循环后续的代码直接让循环进入下一轮。
+
+打印99乘法表时，发现python3才能在print中使用end=''来替换print的自动换行符，我用的python2，哭了
